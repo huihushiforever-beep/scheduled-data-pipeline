@@ -1,0 +1,10 @@
+{
+  "generated_for": "offline rehearsal - practice data only",
+  "items": [
+    {"external_id": "B-2001", "name": "Bramble Joinery Ltd", "city": "Leeds", "category": "joinery", "website": "bramble-joinery.example"},
+    {"external_id": "B-2002", "name": "Ryedale Kitchens", "city": "York", "category": "joinery", "website": "ryedale-kitchens.example"},
+    {"external_id": "B-2003", "name": "Wolds Insulation", "city": "York", "category": "materials", "website": "wolds-insulation.example"},
+    {"external_id": "B-2004", "name": "Aire Valley Scaffolding", "city": "Leeds", "category": "access", "website": "aire-valley-scaffold.example"},
+    {"external_id": null, "name": "Row missing its id on purpose", "city": "Leeds", "category": "unknown", "website": "broken-row.example"}
+  ]
+}

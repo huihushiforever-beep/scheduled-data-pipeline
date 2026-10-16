@@ -1,0 +1,9 @@
+{
+  "generated_for": "offline rehearsal - practice data only",
+  "items": [
+    {"external_id": "C-3001", "name": "Pennine Roofing Co.", "city": "Bradford", "category": "roofing", "website": "pennine-roofing.example"},
+    {"external_id": "C-3002", "name": "Vale Plant Hire", "city": "Doncaster", "category": "plant", "website": "vale-plant.example"},
+    {"external_id": "C-3003", "name": "Wharfe Brick & Block", "city": "Otley", "category": "materials", "website": "wharfe-brick.example"},
+    {"external_id": "C-3004", "name": "Chevin Glazing", "city": "Otley", "category": "glazing", "website": "chevin-glazing.example"}
+  ]
+}

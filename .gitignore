@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+db/*.db
+db/*.db-journal
+output/alerts.log

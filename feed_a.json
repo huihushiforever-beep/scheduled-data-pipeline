@@ -1,0 +1,11 @@
+{
+  "generated_for": "offline rehearsal - practice data only",
+  "items": [
+    {"external_id": "A-1001", "name": "Northgate Timber Supplies", "city": "Leeds", "category": "materials", "website": "northgate-timber.example"},
+    {"external_id": "A-1002", "name": "Bramble Joinery", "city": "Leeds", "category": "joinery", "website": "bramble-joinery.example"},
+    {"external_id": "A-1003", "name": "Harbour Steel Works", "city": "Hull", "category": "materials", "website": "harbour-steel.example"},
+    {"external_id": "A-1004", "name": "Pennine Roofing Co", "city": "Bradford", "category": "roofing", "website": "pennine-roofing.example"},
+    {"external_id": "A-1005", "name": "Calder Electrical", "city": "Wakefield", "category": "electrical", "website": "calder-electrical.example"},
+    {"external_id": "A-1006", "name": "Dales Stone & Paving", "city": "Skipton", "category": "materials", "website": "dales-stone.example"}
+  ]
+}

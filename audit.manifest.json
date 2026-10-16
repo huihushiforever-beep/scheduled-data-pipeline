@@ -1,0 +1,67 @@
+{
+  "name": "04_pipeline_database",
+  "kind": "script-system",
+  "entry": "runner.py",
+  "required_files": [
+    "verify_run.py",
+    "sources/feeds.json",
+    "db/schema.sql",
+    "db/schema_postgres.sql",
+    "n8n/workflow.json",
+    "README.zh.md"
+  ],
+  "readme": {
+    "required_sections": [
+      "What it handles",
+      "Run it",
+      "Output"
+    ]
+  },
+  "run": {
+    "command": [
+      "python",
+      "runner.py",
+      "--offline"
+    ],
+    "expect_exit": 0,
+    "expect_files": [
+      "db/pipeline.db",
+      "output/run_summary.json",
+      "output/status_report.md"
+    ],
+    "expect_stdout_contains": [
+      "run complete"
+    ],
+    "network_required": false,
+    "timeout_seconds": 120
+  },
+  "failure_path": {
+    "command": [
+      "python",
+      "runner.py",
+      "--offline",
+      "--inject-failure",
+      "feed_b",
+      "--db",
+      "db/failure_rehearsal.db"
+    ],
+    "expect_exit": 2,
+    "expect_files": [
+      "output/alerts.log"
+    ],
+    "expect_stdout_contains": [
+      "alert"
+    ],
+    "timeout_seconds": 120
+  },
+  "reconcile": {
+    "command": [
+      "python",
+      "verify_run.py"
+    ],
+    "expect_exit": 0,
+    "timeout_seconds": 120
+  },
+  "allow_emails": [],
+  "notes": "n8n/workflow.json is an importable starting point and is NOT exercised by this audit; the Python pipeline is."
+}

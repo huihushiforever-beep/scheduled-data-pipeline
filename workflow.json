@@ -1,0 +1,110 @@
+{
+  "name": "Daily data pipeline with alert on failure",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 6 * * *"
+            }
+          ]
+        }
+      },
+      "id": "5f1c1d10-0001-4000-8000-000000000001",
+      "name": "Every day at 06:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "command": "python runner.py --online"
+      },
+      "id": "5f1c1d10-0002-4000-8000-000000000002",
+      "name": "Run pipeline",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "onError": "continueErrorOutput",
+      "position": [
+        480,
+        300
+      ],
+      "notes": "Working directory must be this project folder. A non-zero exit code routes to the alert branch."
+    },
+    {
+      "parameters": {},
+      "id": "5f1c1d10-0003-4000-8000-000000000003",
+      "name": "Run finished OK",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "SET-YOUR-CHANNEL-ID",
+          "mode": "list"
+        },
+        "text": "=Pipeline failed at {{ $now.toISO() }}\nExit code: {{ $json.exitCode }}\n{{ $json.stderr }}",
+        "otherOptions": {}
+      },
+      "id": "5f1c1d10-0004-4000-8000-000000000004",
+      "name": "Alert the team",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        400
+      ],
+      "notes": "Set the Slack credential, or swap this node for email. The payload comes from the pipeline's stderr."
+    }
+  ],
+  "connections": {
+    "Every day at 06:00": {
+      "main": [
+        [
+          {
+            "node": "Run pipeline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run pipeline": {
+      "main": [
+        [
+          {
+            "node": "Run finished OK",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Alert the team",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "instanceId": "rehearsal-export",
+    "note": "Importable starting point. Authored against n8n-nodes-base.scheduleTrigger / executeCommand / noOp / slack. Not executed inside n8n here - the Python pipeline is the part that is tested and reconciled."
+  }
+}

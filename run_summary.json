@@ -1,0 +1,38 @@
+{
+  "run_id": "RUN-20261016-023244-36e8",
+  "started_at": "2026-10-16T02:32:44+00:00",
+  "finished_at": "2026-10-16T02:32:45+00:00",
+  "status": "partial",
+  "feeds_total": 3,
+  "feeds_ok": 2,
+  "feeds_failed": 1,
+  "records_seen": 10,
+  "records_new": 10,
+  "records_updated": 0,
+  "records_unchanged": 0,
+  "records_invalid": 0,
+  "records_merged": 1,
+  "feeds": [
+    {
+      "feed_id": "feed_a",
+      "status": "ok",
+      "attempts": 1,
+      "records": 6,
+      "invalid": 0
+    },
+    {
+      "feed_id": "feed_b",
+      "status": "failed",
+      "attempts": 3,
+      "error": "RuntimeError: injected failure (rehearsal)"
+    },
+    {
+      "feed_id": "feed_c",
+      "status": "ok",
+      "attempts": 1,
+      "records": 4,
+      "invalid": 0
+    }
+  ],
+  "database": "failure_rehearsal.db"
+}

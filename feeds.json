@@ -1,0 +1,35 @@
+{
+  "comment": "Each feed is either fetched over HTTP (url) or read from a local fixture (offline rehearsals).",
+  "backoff_seconds": 0.2,
+  "default_max_retries": 3,
+  "invalid_row_tolerance": 0.34,
+  "feeds": [
+    {
+      "id": "feed_a",
+      "name": "Membership directory (practice source)",
+      "fixture": "feed_a.json",
+      "url": null,
+      "id_field": "external_id",
+      "max_retries": 3,
+      "enabled": true
+    },
+    {
+      "id": "feed_b",
+      "name": "Association listing (practice source)",
+      "fixture": "feed_b.json",
+      "url": null,
+      "id_field": "external_id",
+      "max_retries": 3,
+      "enabled": true
+    },
+    {
+      "id": "feed_c",
+      "name": "Equipment suppliers (practice source)",
+      "fixture": "feed_c.json",
+      "url": null,
+      "id_field": "external_id",
+      "max_retries": 3,
+      "enabled": true
+    }
+  ]
+}
